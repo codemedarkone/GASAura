@@ -18,9 +18,19 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TObjectPtr<USkeletalMeshComponent> Weapon; 
+
 public:	
+
+
+
+
+
 // 	virtual void Tick(float DeltaTime) override;
 
 // 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+
 
 };
