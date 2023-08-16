@@ -20,7 +20,7 @@ class AURA_API AAuraPlayerState : public APlayerState, public IAbilitySystemInte
 	
 public:
 	AAuraPlayerState(); 
-	// get ability system component is from the ability interface and the attribute is a getter
+	// Getter ability system component from the ability interface and the UAttribute is a getter
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
