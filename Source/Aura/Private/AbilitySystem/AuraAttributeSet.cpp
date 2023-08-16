@@ -2,12 +2,13 @@
 
 
 #include "AbilitySystem/AuraAttributeSet.h"
-#include "AbilitySystem/AuraAbilitySystemComponent.h"
+
 #include "Net/UnrealNetwork.h"
 
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
+
 
 }
 
