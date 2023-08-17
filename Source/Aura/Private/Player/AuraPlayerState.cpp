@@ -3,6 +3,7 @@
 
 #include "Player/AuraPlayerState.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "AbilitySystem/AuraAttributeSet.h"
 
 AAuraPlayerState::AAuraPlayerState()
 {
@@ -19,7 +20,7 @@ AAuraPlayerState::AAuraPlayerState()
 	*/
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed); 
 
-	AttributeSet = CreateDefaultSubobject<UAttributeSet>("AttributeSet");
+	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
 
 	//prevent lag time the higher it is
 	NetUpdateFrequency = 100.f; 

@@ -2,12 +2,17 @@
 
 
 #include "AbilitySystem/AuraAttributeSet.h"
-
+#include "AttributeSet.h"
 #include "Net/UnrealNetwork.h"
+
 
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
+	InitHealth(50.f);
+	InitMaxhealth(100.f);
+	InitMana(50.f);
+	InitMaxMana(50.f); 
 
 
 }

@@ -19,7 +19,7 @@ AAuraEffectActor::AAuraEffectActor()
 
 	Sphere = CreateDefaultSubobject<USphereComponent>("Sphere"); 
 	Sphere->SetupAttachment(GetRootComponent()); 
-
+	
 
 }
 
@@ -28,7 +28,8 @@ void AAuraEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	//TODO: Change this to apply a gameplayeffect. For now using const cast as a hack!
 	if (IAbilitySystemInterface* ASCInterface = Cast<IAbilitySystemInterface>(OtherActor))
 	{
-		const UAuraAttributeSet* AuraAttributeSet = Cast<UAuraAttributeSet>(ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(UAuraAttributeSet::StaticClass())); 
+		const UAuraAttributeSet* AuraAttributeSet = Cast<UAuraAttributeSet>(
+			ASCInterface->GetAbilitySystemComponent()->GetAttributeSet(UAuraAttributeSet::StaticClass())); 
 		
 		UAuraAttributeSet* MutableAuraAttributeSet = const_cast<UAuraAttributeSet*>(AuraAttributeSet);
 		
