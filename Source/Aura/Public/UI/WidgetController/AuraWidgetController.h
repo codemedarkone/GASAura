@@ -50,6 +50,7 @@ public:
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCparams);
 	virtual void BroadcastInitialValues(); 
 
+	
 	virtual void BindCallbacksToDependencies(); 
 
 protected:
