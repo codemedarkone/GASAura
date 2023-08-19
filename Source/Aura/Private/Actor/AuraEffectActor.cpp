@@ -14,7 +14,7 @@ AAuraEffectActor::AAuraEffectActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
-	SetRootComponent(CreateDefaultSubobject<USceneComponent>("SceneComponent")); 
+	SetRootComponent(CreateDefaultSubobject<USceneComponent>("SceneComponent"));
 }
 
 void AAuraEffectActor::BeginPlay()
@@ -33,8 +33,16 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor * TargetActor, TSubclassOf<UGa
 
 	FGameplayEffectContextHandle EffectContexthandle = TargetASC->MakeEffectContext();
 	EffectContexthandle.AddSourceObject(this);
-	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(InstantGameplayEffectClass, 1.f, EffectContexthandle);
-	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get()); 
+
+ 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(InstantGameplayEffectClass, 1.f, EffectContexthandle);
+  	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
+
+	
+// 	GEngine->AddOnScreenDebugMessage(1, 10, FColor::Black, TEXT("effect spec handle is nullptr"));
+
+
+
+
 }
 
 
