@@ -10,14 +10,46 @@
 class UAuraAttributeSet;
 
 
+
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
  	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
  	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
  	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
-/**
- * 
- */
+
+
+USTRUCT()
+struct FEffectProperties
+{
+	GENERATED_BODY();
+
+	FEffectProperties() {}
+
+	FGameplayEffectContextHandle EffectContexthandle;
+
+	UPROPERTY()
+		UAbilitySystemComponent* SourceASC = nullptr;
+
+	UPROPERTY()
+		AActor* SourceAvatarActor = nullptr;
+
+	UPROPERTY()
+		AController* SourceController = nullptr;
+
+	ACharacter* SourceCharacter = nullptr;
+
+	UPROPERTY()
+		UAbilitySystemComponent* TargetASC = nullptr;
+
+	UPROPERTY()
+		AActor* TargetAvatarActor = nullptr;
+
+	UPROPERTY()
+		AController* TargetController = nullptr;
+
+	ACharacter* TargetCharacter = nullptr;
+};
+
 UCLASS()
 class AURA_API UAuraAttributeSet : public UAttributeSet
 {
@@ -27,7 +59,14 @@ public:
 	UAuraAttributeSet();
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override; 
 
+
+	// Changes to currentvalue before the changes happens. Clamps attribute from going below 0 or above maxhealth maxmana etc.
+	// not most attractive choice for clamping. 
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override; 
+
+	//Better then preattribute
+	//source = causer of the effect, Target = target of the effect (Owner of this attributeSet)
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override; 
 
 
 	//Attributes have this FGameplayAttributeData.
@@ -68,7 +107,9 @@ public:
 
 
 
-protected:
+private:
+	//This is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
+	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const; 
 
 
 
