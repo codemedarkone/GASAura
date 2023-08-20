@@ -35,7 +35,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor * TargetActor, TSubclassOf<UGa
 	FGameplayEffectContextHandle EffectContexthandle = TargetASC->MakeEffectContext();
 	EffectContexthandle.AddSourceObject(this);
 	
- 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(GameplayEffectClass, 1.f, EffectContexthandle);
+ 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(GameplayEffectClass, Actorlevel, EffectContexthandle);
   	const FActiveGameplayEffectHandle ActiveEffectHandle = TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
 
 	const bool bIsInfinite = EffectSpecHandle.Data.Get()->Def.Get()->DurationPolicy == EGameplayEffectDurationType::Infinite;
@@ -45,8 +45,6 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor * TargetActor, TSubclassOf<UGa
 		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC); 
 	}
 // 	GEngine->AddOnScreenDebugMessage(1, 10, FColor::Black, TEXT("effect spec handle is nullptr"));
-
-
 
 
 }

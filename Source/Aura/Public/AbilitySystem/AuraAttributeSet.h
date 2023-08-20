@@ -27,27 +27,34 @@ struct FEffectProperties
 
 	FGameplayEffectContextHandle EffectContexthandle;
 
+	//Source
 	UPROPERTY()
-		UAbilitySystemComponent* SourceASC = nullptr;
+	UAbilitySystemComponent* SourceASC = nullptr;
 
 	UPROPERTY()
-		AActor* SourceAvatarActor = nullptr;
+	AActor* SourceAvatarActor = nullptr;
 
 	UPROPERTY()
-		AController* SourceController = nullptr;
+	AController* SourceController = nullptr;
 
+	UPROPERTY()
 	ACharacter* SourceCharacter = nullptr;
+	//End Source
+	// 
+	//Target
+	UPROPERTY()
+	UAbilitySystemComponent* TargetASC = nullptr;
 
 	UPROPERTY()
-		UAbilitySystemComponent* TargetASC = nullptr;
+	AActor* TargetAvatarActor = nullptr;
 
 	UPROPERTY()
-		AActor* TargetAvatarActor = nullptr;
+	AController* TargetController = nullptr;
 
 	UPROPERTY()
-		AController* TargetController = nullptr;
-
 	ACharacter* TargetCharacter = nullptr;
+	//End Target
+
 };
 
 UCLASS()
@@ -108,7 +115,7 @@ public:
 
 
 private:
-	//This is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
+	//This function is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const; 
 
 
