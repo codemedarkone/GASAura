@@ -52,7 +52,7 @@ protected:
 
 	UPROPERTY(BlueprintCallable)
 	void OnOverLap(AActor* TargetActor);
-	
+
 	UPROPERTY(BlueprintCallable)
 	void OnEndOverlap(AActor* TargetActor);
 
