@@ -30,6 +30,7 @@ enum class EEffectRemovalPolicy
 };
 
 
+
 UCLASS()
 class AURA_API AAuraEffectActor : public AActor
 {
@@ -45,6 +46,8 @@ protected:
 
 
 protected:
+	
+
 
 	//C++ function we use in blueprints to use effects
 	UFUNCTION(BlueprintCallable)
@@ -78,10 +81,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEndOverlap; 
-
-
-
-
 
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles; 
 
