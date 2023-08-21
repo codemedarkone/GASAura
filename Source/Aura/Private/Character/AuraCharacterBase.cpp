@@ -27,6 +27,11 @@ void AAuraCharacterBase::BeginPlay()
 	
 }
 
+void AAuraCharacterBase::InitAbilityActorInfo()
+{
+
+}
+
 // void AAuraCharacterBase::Tick(float DeltaTime)
 // {
 // 	Super::Tick(DeltaTime);
