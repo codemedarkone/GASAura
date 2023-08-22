@@ -50,5 +50,4 @@ protected:
 	 void ManaChanged(const FOnAttributeChangeData& Data) const;
 	 void MaxManaChanged(const FOnAttributeChangeData& Data) const; 
 
-
 };
