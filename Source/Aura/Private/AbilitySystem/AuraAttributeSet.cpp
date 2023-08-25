@@ -14,7 +14,7 @@ UAuraAttributeSet::UAuraAttributeSet()
 {
 	InitHealth(10.f);
 	InitMaxhealth(100.f);
-	InitMana(10.f);
+	InitMana(10.f); 
 	InitMaxMana(100.f); 
 
 
@@ -104,6 +104,8 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 
 	FEffectProperties Props;
 	SetEffectProperties(Data, Props); 
+
+
 
 	//Clamp HP and MP to not go above max or below 0 regardless of modifiers. 
 	SetClampProperties(Data);

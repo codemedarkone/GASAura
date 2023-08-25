@@ -114,7 +114,7 @@ public:
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Maxhealth);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Mana, Category = "Vital Attributes")
-	FGameplayAttributeData Mana;
+	FGameplayAttributeData Mana; 
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Mana);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxMana, Category = "Vital Attributes")
