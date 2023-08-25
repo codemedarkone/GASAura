@@ -79,7 +79,29 @@ public:
 	*/
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override; 
 
+	/* 
+	* PRIMARY ATTRIBUTES	
+	*/
 
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Strength, Category = "Vital Attributes")
+	FGameplayAttributeData Strength; 
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Strength);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Intelligence, Category = "Vital Attributes")
+	FGameplayAttributeData Intelligence; 
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Intelligence);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Resilience, Category = "Vital Attributes")
+	FGameplayAttributeData Resilience; 
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Resilience);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Vigor, Category = "Vital Attributes")
+	FGameplayAttributeData Vigor; 
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Vigor);
+
+	
+
+	// VITAL ATTRIBUTES
 	//Attributes have this FGameplayAttributeData.
 	//ReplicatedUsing = the function OnRep_health
 	//1. Steps, You Declare Variable, You Replicate it in UPROPERTY
@@ -117,7 +139,19 @@ public:
 	//END MANA
 
 
+	//PRIMARY ATTRIBUTES ON_REP
 
+	UFUNCTION()
+	void OnRep_Strength(const FGameplayAttributeData& OldStrength) const;
+
+	UFUNCTION()
+	void OnRep_Intelligence(const FGameplayAttributeData& OldIntelligence) const;
+
+	UFUNCTION()
+	void OnRep_Resilience(const FGameplayAttributeData& OldResilience) const;
+
+	UFUNCTION()
+	void OnRep_Vigor(const FGameplayAttributeData& OldVigor) const;
 private:
 	//This function is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const; 
