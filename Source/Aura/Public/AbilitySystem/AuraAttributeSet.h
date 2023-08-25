@@ -67,12 +67,16 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override; 
 
 
-	// Changes to currentvalue before the changes happens. Clamps attribute from going below 0 or above maxhealth maxmana etc.
-	// not most attractive choice for clamping. 
+	/*Changes to currentvalue before the changes happens.Clamps attribute from going below 0 or above maxhealth maxmana etc.
+	// not most attractive choice for clamping. HP goes above max due to more then 1 modifier
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override; 
+	*/
 
-	//Better then preattribute
+
+	/*Better then pre attribute
 	//source = causer of the effect, Target = target of the effect (Owner of this attributeSet)
+	//Set the clamp here so hp pickups dont go above max regardless of how many query modifiers. 
+	*/
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override; 
 
 
@@ -118,6 +122,6 @@ private:
 	//This function is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const; 
 
-
+	void SetClampProperties(const FGameplayEffectModCallbackData& Data);
 
 };

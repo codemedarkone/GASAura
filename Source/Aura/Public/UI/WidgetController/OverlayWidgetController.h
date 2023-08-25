@@ -12,7 +12,7 @@ struct FOnAttributeChangeData;
 class UAuraUserWidget;
 class UDataTable;
  
-
+ 
 USTRUCT(BlueprintType)
 struct FUIWidgetRow : public FTableRowBase
 {
