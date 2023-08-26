@@ -67,10 +67,10 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override; 
 
 
-	/*Changes to currentvalue before the changes happens.Clamps attribute from going below 0 or above maxhealth maxmana etc.
+	//Changes to currentvalue before the changes happens.Clamps attribute from going below 0 or above maxhealth maxmana etc.
 	// not most attractive choice for clamping. HP goes above max due to more then 1 modifier
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override; 
-	*/
+	
 
 
 	/*Better then pre attribute

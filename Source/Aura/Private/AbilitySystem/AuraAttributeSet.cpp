@@ -13,9 +13,8 @@
 UAuraAttributeSet::UAuraAttributeSet()
 {
 	InitHealth(10.f);
-	InitMaxhealth(100.f);
 	InitMana(10.f); 
-	InitMaxMana(100.f); 
+ 
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -51,7 +50,7 @@ void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 }
 
-/*Clamps whats returned from querying the modifier.Anything that queries again will recalculate what
+//Clamps whats returned from querying the modifier.Anything that queries again will recalculate what
 // was returned by modifier so hp goes above max even with clamp due to the the second query
 void UAuraAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
 {
@@ -59,14 +58,14 @@ void UAuraAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, 
 
 	if (Attribute == GetHealthAttribute())
 	{
-		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxhealth());  
+ 		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxhealth());  
 	}
 
 	if (Attribute == GetManaAttribute())
 	{
-		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMana()); 
+ 		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMana()); 
 	}
-}*/
+}
 
 
 void UAuraAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const
@@ -123,14 +122,14 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 
 void UAuraAttributeSet::SetClampProperties(const FGameplayEffectModCallbackData& Data)
 {
-// 	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
-// 	{
-// 		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxhealth()));
-// 	}
-// 	if (Data.EvaluatedData.Attribute == GetManaAttribute())
-// 	{
-// 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
-// 	}
+	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+	{
+		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxhealth()));
+	}
+	if (Data.EvaluatedData.Attribute == GetManaAttribute())
+	{
+		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
+	}
 }
 
 void UAuraAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
