@@ -152,6 +152,8 @@ public:
 
 	UFUNCTION()
 	void OnRep_Vigor(const FGameplayAttributeData& OldVigor) const;
+
+
 private:
 	//This function is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const; 

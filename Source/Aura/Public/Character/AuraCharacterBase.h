@@ -22,6 +22,7 @@ public:
 
 	//Returns pointers for both ability system and attributeSet. Attribute is a getter. GetAbility Component is from the Ability interface.
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
