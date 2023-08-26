@@ -16,8 +16,6 @@ UAuraAttributeSet::UAuraAttributeSet()
 	InitMaxhealth(100.f);
 	InitMana(10.f); 
 	InitMaxMana(100.f); 
-
-
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -35,7 +33,6 @@ void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	//RepNotify.Always, if value is set on server, replicate it, and on client the value will be updated and set
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Health, COND_None, REPNOTIFY_Always); 
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Maxhealth, COND_None, REPNOTIFY_Always);
-
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, Mana, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UAuraAttributeSet, MaxMana, COND_None, REPNOTIFY_Always);
 
@@ -113,14 +110,14 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 
 void UAuraAttributeSet::SetClampProperties(const FGameplayEffectModCallbackData& Data)
 {
-	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
-	{
-		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxhealth()));
-	}
-	if (Data.EvaluatedData.Attribute == GetManaAttribute())
-	{
-		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
-	}
+// 	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+// 	{
+// 		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxhealth()));
+// 	}
+// 	if (Data.EvaluatedData.Attribute == GetManaAttribute())
+// 	{
+// 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
+// 	}
 }
 
 void UAuraAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
