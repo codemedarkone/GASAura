@@ -30,15 +30,15 @@ float UMMC_MaxHealth::CalculateBaseMagnitude_Implementation(const FGameplayEffec
 	const FGameplayTagContainer* TargetTags = Spec.CapturedTargetTags.GetAggregatedTags(); 
 
 	//In order to capture an attribute and get its value
-	FAggregatorEvaluateParameters EvaluationParamters; 
-	EvaluationParamters.SourceTags = SourceTags;
-	EvaluationParamters.TargetTags = TargetTags; 
+	FAggregatorEvaluateParameters EvaluationParameters; 
+	EvaluationParameters.SourceTags = SourceTags;
+	EvaluationParameters.TargetTags = TargetTags;
 
 	//In order to capture the attribute we are interested in. In this case Vigor
 	float Vigor = 0.f; 
-	GetCapturedAttributeMagnitude(VigorDef, Spec, EvaluationParamters, Vigor); 
+	GetCapturedAttributeMagnitude(VigorDef, Spec, EvaluationParameters, Vigor);
 
-	//clamp it and make its never a negative value
+	//clamp it and make sure its never a negative value
 	Vigor = FMath::Max<float>(Vigor, 0.f); 
 
 	ICombatInterface* CombatInterface = Cast<ICombatInterface>(Spec.GetContext().GetSourceObject());
