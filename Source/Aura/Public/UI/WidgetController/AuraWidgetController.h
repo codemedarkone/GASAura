@@ -34,8 +34,6 @@ struct FWidgetControllerParams
 	TObjectPtr<UAttributeSet> AttributeSet = nullptr;
 };
 
-
-
 /**
  * 
  */
@@ -48,9 +46,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCparams);
-	virtual void BroadcastInitialValues(); 
 
-	
+	UFUNCTION(BlueprintCallable)
+	virtual void BroadcastInitialValues(); 
 	virtual void BindCallbacksToDependencies(); 
 
 protected:

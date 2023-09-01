@@ -24,10 +24,7 @@ class AURA_API AAuraHUD : public AHUD
 	GENERATED_BODY()
 
 
-public:
-
-
-	
+public:	
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams); 
 	UAttributeMenuWidgetController* GetAttributeMenuControllerWidgetController(const FWidgetControllerParams& WCParams);
 
@@ -50,8 +47,6 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
-
-
 
 	UPROPERTY()
 	TObjectPtr<UAttributeMenuWidgetController> AttributeMenuWidgetController; 
