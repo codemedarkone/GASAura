@@ -16,7 +16,7 @@ class UAuraAttributeSet;
  	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
  	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
-
+ 
 
 USTRUCT()
 struct FEffectProperties
@@ -57,6 +57,12 @@ struct FEffectProperties
 
 };
 
+//Create alias for this huge functptr to AttributeFunctPtr
+//typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFunctPtr; 
+//Typedef is specific for Fgameplayattribute() signature, but Tstaticfunctptr is generic to any signature
+template<class T>
+using TStaticFunctPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+
 UCLASS()
 class AURA_API UAuraAttributeSet : public UAttributeSet
 {
@@ -71,13 +77,15 @@ public:
 	// not most attractive choice for clamping. HP goes above max due to more then 1 modifier
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override; 
 	
-
-
 	/*Better then pre attribute
 	//source = causer of the effect, Target = target of the effect (Owner of this attributeSet)
 	//Set the clamp here so hp pickups dont go above max regardless of how many query modifiers. 
 	*/
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override; 
+
+	//TMap 
+	TMap<FGameplayTag, TStaticFunctPtr<FGameplayAttribute()>> TagsToAttributes;
+
 
 	/* 
 	* PRIMARY ATTRIBUTES	
