@@ -14,5 +14,8 @@ class AURA_API UAuraGameplayAbilityBase : public UGameplayAbility
 {
 	GENERATED_BODY()
 	
+public:
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	FGameplayTag StartupInputTag; 
 };
