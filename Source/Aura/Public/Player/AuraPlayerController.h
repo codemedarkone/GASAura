@@ -7,9 +7,6 @@
 #include "GameplayTagContainer.h"
 #include "AuraPlayerController.generated.h"
 
-/**
- * 
- */
 
 class UInputMappingContext;
 class UInputAction;
