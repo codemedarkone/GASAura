@@ -150,6 +150,25 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 	{
 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
 	}
+	//We use the Meta Attribute
+	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
+	{
+		//we need local float variable that has the value of IncomingDamage
+		const float LocalIncomingDamage = GetIncomingDamage();
+		//Set meta attribute to 0
+		SetIncomingDamage(0.f); 
+		//Only do something if LocalIncomingDamage is not 0
+		if (LocalIncomingDamage > 0.f)
+		{
+			//we set a health variable since there is nothing else to do, we add the minus
+			const float NewHealth = GetHealth() - LocalIncomingDamage;
+			//We set health now with a clamp to not go below zero. 
+			SetHealth(FMath::Clamp(NewHealth, 0.f, GetMaxhealth())); 
+
+			//If HP is below 0, its fatal
+			const bool bFatal = NewHealth <= 0.f; 
+		}
+	}
 }
 
 
