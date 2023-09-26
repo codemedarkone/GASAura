@@ -31,6 +31,14 @@ public:
 
 	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
 
+	//Handle on Server
+	virtual void Die() override; 
+
+
+	//Handle death on server and client
+	UFUNCTION(NetMulticast, Reliable)
+	virtual void MulticastHandleDeath(); 
+
 protected:
 	virtual void BeginPlay() override;
 
