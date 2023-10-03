@@ -248,6 +248,6 @@ private:
 	//This function is to avoid cluttering the PostGameplayEffectExecute function. We add struct for variables.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const; 
 
-
+	void ShowFloatingText(const FEffectProperties& Props, float Damage) const; 
 
 };
