@@ -1,6 +1,7 @@
 // CopyRight Red Project
 
 
+#include "Actor/AuraProjectile.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
 #include "Aura/Aura.h"
@@ -9,7 +10,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraFunctionLibrary.h"
-#include "Actor/AuraProjectile.h"
+
 
 // Sets default values
 AAuraProjectile::AAuraProjectile()
