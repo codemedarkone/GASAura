@@ -21,13 +21,13 @@ public:
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	virtual UScriptStruct* GetScriptStruct() const
 	{
-		return FGameplayEffectContext::StaticStruct();
+		return StaticStruct();
 	}
 
 	/** Creates a Copy of this context, used to duplicated for later modifications */
-	virtual FGameplayEffectContext* Duplicate() const 
+	virtual FAuraGameplayEffectContext* Duplicate() const
 	{
-		FGameplayEffectContext* NewContext = new FGameplayEffectContext();
+		FAuraGameplayEffectContext* NewContext = new FAuraGameplayEffectContext();
 		*NewContext = *this;
 		if (GetHitResult())
 		{
