@@ -8,8 +8,8 @@
 #include "Aura/Aura.h"
 
 // Sets default values
-AAuraCharacterBase::AAuraCharacterBase()
-{
+ AAuraCharacterBase::AAuraCharacterBase()
+ {
 	PrimaryActorTick.bCanEverTick = false;
 
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
