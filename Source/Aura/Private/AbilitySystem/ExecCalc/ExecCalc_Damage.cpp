@@ -8,6 +8,7 @@
 #include "AbilitySystem/Data/CharacterClassInfo.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "Interaction/CombatInterface.h"
+#include "AuraAbilityTypes.h"
 
 
 //struct to hold all the capture definitions
@@ -87,6 +88,8 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	// If block, halve the damage
 	Damage = bBlocked ? Damage / 2.f : Damage; 
 
+	FGameplayEffectContextHandle EffectContectHandle = Spec.GetContext();
+	UAuraAbilitySystemLibrary::SetIsBlockedHit(EffectContectHandle, bBlocked); 
 
 	float TargetArmor = 0.f;
 	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().ArmorDef, EvaluationParameters, TargetArmor);
@@ -133,6 +136,8 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	// critical Hit Resistance Reduces critical hit chance by a certain percentage
 	const float EffectiveCriticalHitChance = SourceCriticalHitChance - TargetCriticalHitResistance * CriticalHitResistanceCoefficient;
 	const bool bCriticalHit = FMath::RandRange(1, 100) < EffectiveCriticalHitChance; 
+
+	UAuraAbilitySystemLibrary::SetIsCriticalHit(EffectContectHandle, bCriticalHit); 
 
 	// Double bonus damage plus if critical hit
 	Damage = bCriticalHit ? 2.f * Damage + SourceCriticalHitDamage : Damage; 

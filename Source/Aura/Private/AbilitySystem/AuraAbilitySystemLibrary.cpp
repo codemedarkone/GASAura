@@ -9,6 +9,7 @@
 #include "Game/AuraGameModeBase.h"
 #include "GameplayAbilities/Public/AbilitySystemComponent.h"
 #include "GameplayEffectTypes.h"
+#include "AuraAbilityTypes.h"
 
 
 
@@ -18,14 +19,14 @@ UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(
 	{
 		if (AAuraHUD* AuraHUD = Cast<AAuraHUD>(PC->GetHUD()))
 		{
-			AAuraPlayerState* PS = PC->GetPlayerState<AAuraPlayerState>(); 
-			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent(); 
-			UAttributeSet* AS = PS->GetAttributeSet(); 
-			const FWidgetControllerParams WidgetControllerParams(PC, PS, ASC, AS); 
-			return AuraHUD->GetOverlayWidgetController(WidgetControllerParams); 
+			AAuraPlayerState* PS = PC->GetPlayerState<AAuraPlayerState>();
+			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();
+			UAttributeSet* AS = PS->GetAttributeSet();
+			const FWidgetControllerParams WidgetControllerParams(PC, PS, ASC, AS);
+			return AuraHUD->GetOverlayWidgetController(WidgetControllerParams);
 		}
 	}
-	return nullptr; 
+	return nullptr;
 }
 
 UAttributeMenuWidgetController* UAuraAbilitySystemLibrary::GetAttributeMenuWidgetController(const UObject* WorldContextObject)
@@ -48,7 +49,7 @@ void UAuraAbilitySystemLibrary::InitializeDefaultAttributes(const UObject* World
 {
 	AActor* AvatarActor = ASC->GetAvatarActor();
 
-	UCharacterClassInfo* CharacterClassInfo = GetCharacterClassInfo(WorldContextObject); 
+	UCharacterClassInfo* CharacterClassInfo = GetCharacterClassInfo(WorldContextObject);
 	FCharacterClassDefaultInfo ClassDefaultInfo = CharacterClassInfo->GetClassDefaultInfo(CharacterClass);
 
 	FGameplayEffectContextHandle PrimaryAttributesContextHandle = ASC->MakeEffectContext();
@@ -69,10 +70,10 @@ void UAuraAbilitySystemLibrary::InitializeDefaultAttributes(const UObject* World
 
 void UAuraAbilitySystemLibrary::GiveStartupAbilities(const UObject* WorldContextObject, UAbilitySystemComponent* ASC)
 {
-	UCharacterClassInfo* CharacterClassInfo = GetCharacterClassInfo(WorldContextObject); 
+	UCharacterClassInfo* CharacterClassInfo = GetCharacterClassInfo(WorldContextObject);
 	for (TSubclassOf<UGameplayAbility> AbilityClass : CharacterClassInfo->CommonAbilites)
 	{
-		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass, 1); 
+		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass, 1);
 		ASC->GiveAbility(AbilitySpec);
 	}
 
@@ -84,4 +85,38 @@ UCharacterClassInfo* UAuraAbilitySystemLibrary::GetCharacterClassInfo(const UObj
 	if (AuraGameMode == nullptr) return nullptr;
 
 	return AuraGameMode->CharacterClassInfo;
+}
+
+bool UAuraAbilitySystemLibrary::IsBlockedHit(const FGameplayEffectContextHandle& EffectContextHandle)
+{
+	if (const FAuraGameplayEffectContext* AuraEffectContext = static_cast<const FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
+	{
+		return AuraEffectContext->IsBlockedHit();
+	}
+	return false;
+}
+
+bool UAuraAbilitySystemLibrary::IsCriticalHit(const FGameplayEffectContextHandle& EffectContextHandle)
+{
+	if (const FAuraGameplayEffectContext* AuraEffectContext = static_cast<const FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
+	{
+		return AuraEffectContext->IsCriticalHit();
+	}
+	return false;
+}
+
+void UAuraAbilitySystemLibrary::SetIsBlockedHit(FGameplayEffectContextHandle& EffectContextHandle, bool bInIsBlockedHit)
+{
+	if(FAuraGameplayEffectContext* AuraEffectContext = static_cast<FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
+	{
+		AuraEffectContext->SetIsBlockedHit(bInIsBlockedHit); 
+	}
+}
+
+void UAuraAbilitySystemLibrary::SetIsCriticalHit(FGameplayEffectContextHandle& EffectContextHandle, bool bInIsCriticalHit)
+{
+	if (FAuraGameplayEffectContext* AuraEffectContext = static_cast<FAuraGameplayEffectContext*>(EffectContextHandle.Get()))
+	{
+		AuraEffectContext->SetIsCriticalHit(bInIsCriticalHit);
+	}
 }

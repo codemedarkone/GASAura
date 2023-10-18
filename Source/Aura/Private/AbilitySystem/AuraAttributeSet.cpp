@@ -11,6 +11,7 @@
 #include "Interaction/CombatInterface.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/AuraPlayerController.h"
+#include "AbilitySystem/AuraAbilitySystemLibrary.h"
 
 
 UAuraAttributeSet::UAuraAttributeSet()
@@ -183,12 +184,15 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 				Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);
 			}
 
-			ShowFloatingText(Props, LocalIncomingDamage);
+			
+			const bool bBlock = UAuraAbilitySystemLibrary::IsBlockedHit(Props.EffectContexthandle);
+			const bool BCriticalHit = UAuraAbilitySystemLibrary::IsCriticalHit(Props.EffectContexthandle); 
+			ShowFloatingText(Props, LocalIncomingDamage, bBlock, BCriticalHit);
 		}
 	}
 }
 
-void UAuraAttributeSet::ShowFloatingText(const FEffectProperties& Props, float Damage) const
+void UAuraAttributeSet::ShowFloatingText(const FEffectProperties& Props, float Damage, bool bBlockedHit, bool bCriticalHit) const
 {
 	if (Props.SourceCharacter != Props.TargetCharacter)
 	{
