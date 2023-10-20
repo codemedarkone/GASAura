@@ -18,6 +18,7 @@ protected:
 
 	virtual void TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override; 
 
+	// Linked these blackboardkeys to keys in the Blackboard in the blueprint
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	FBlackboardKeySelector TargetToFollowSelector;
 
