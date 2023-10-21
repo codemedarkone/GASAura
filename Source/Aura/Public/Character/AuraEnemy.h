@@ -45,7 +45,7 @@ public:
 	FOnAttributeChangedSignature OnMaxHealthChanged;
 	// end delegate
 
-	void HitReact_TagChanged(const FGameplayTag CallbackTag, int32 NewCount); 
+	void HitReactTagChanged(const FGameplayTag CallbackTag, int32 NewCount); 
 
 	UPROPERTY(BlueprintReadOnly, Category = "Combat")
 	bool bHitReacting = false;
