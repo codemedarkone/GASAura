@@ -7,6 +7,7 @@
 #include "Interaction/EnemyInterface.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "AbilitySystem/Data/CharacterClassInfo.h"
+
 #include "AuraEnemy.generated.h"
 
 class UWidgetComponent;
