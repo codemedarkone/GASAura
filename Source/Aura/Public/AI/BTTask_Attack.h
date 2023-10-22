@@ -7,7 +7,7 @@
 #include "BTTask_Attack.generated.h"
 
 /**
- * 
+ *  
  */
 UCLASS()
 class AURA_API UBTTask_Attack : public UBTTask_BlueprintBase
