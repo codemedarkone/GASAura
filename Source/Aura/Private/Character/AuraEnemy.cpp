@@ -145,4 +145,13 @@ void AAuraEnemy::Die()
 	Super::Die(); 
 }
 
+AActor* AAuraEnemy::GetCombatTarget_Implementation() const
+{
+	return CombatTarget;
+}
+
+void AAuraEnemy::SetCombatTarget_Implementation(AActor* InCombatTarget)
+{
+	CombatTarget = InCombatTarget;
+}
 
