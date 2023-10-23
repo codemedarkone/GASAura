@@ -30,7 +30,8 @@ public:
 	virtual int32 GetPlayerLevel();
 
 	//return socket location
-	virtual FVector GetCombatSocketLocation(); 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	FVector GetCombatSocketLocation(); 
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void UpdateFacingTarget(const FVector& Target);
