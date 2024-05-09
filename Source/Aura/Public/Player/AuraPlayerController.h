@@ -54,8 +54,8 @@ private:
 	void Move(const FInputActionValue& InputActionValue); 
 
 	void CursorTrace();
-	IEnemyInterface* LastActor;
-	IEnemyInterface* ThisActor; 
+	TScriptInterface<IEnemyInterface> LastActor;
+	TScriptInterface<IEnemyInterface> ThisActor;
 	FHitResult CursorHit;
 
 
