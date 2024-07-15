@@ -21,6 +21,7 @@ public:
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	virtual UScriptStruct* GetScriptStruct() const
 	{
+
 		return StaticStruct();
 	}
 
