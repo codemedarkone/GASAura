@@ -10,7 +10,8 @@
 #include "GameplayAbilities/Public/AbilitySystemComponent.h"
 #include "GameplayEffectTypes.h"
 #include "AuraAbilityTypes.h"
-#include <Interaction/CombatInterface.h>
+#include "Interaction/CombatInterface.h"
+#include "Engine/OverlapResult.h"
 
 
 

@@ -9,8 +9,8 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "Components/SplineComponent.h"
 #include "AuraGameplayTags.h"
-#include "NavigationSystem/Public/NavigationSystem.h"
-#include "NavigationSystem/Public/NavigationPath.h"
+#include "NavigationSystem.h"
+#include "NavigationPath.h"
 #include "GameFramework/Character.h"
 #include "UI/Widget/DamageTextComponent.h"
 
