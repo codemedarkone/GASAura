@@ -9,8 +9,8 @@ public class AuraTarget : TargetRules
 	{
 		Type = TargetType.Game;
         DefaultBuildSettings = BuildSettingsVersion.Latest;
-        IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
+        DefaultBuildSettings = BuildSettingsVersion.V5;
 
-		ExtraModuleNames.AddRange( new string[] { "Aura" } );
+        ExtraModuleNames.AddRange( new string[] { "Aura" } );
 	}
 }

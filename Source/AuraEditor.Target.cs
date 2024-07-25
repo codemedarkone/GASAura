@@ -9,8 +9,8 @@ public class AuraEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
         DefaultBuildSettings = BuildSettingsVersion.Latest;
-        IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
+        DefaultBuildSettings = BuildSettingsVersion.V5;
 
-		ExtraModuleNames.AddRange( new string[] { "Aura" } );
+        ExtraModuleNames.AddRange( new string[] { "Aura" } );
 	}
 }
