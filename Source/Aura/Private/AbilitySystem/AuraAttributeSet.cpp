@@ -146,7 +146,7 @@ void UAuraAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackData
 
 
 
-
+//Happens after gameplay Effect has already been applied
 void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
@@ -166,6 +166,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectMo
 	{
 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
 	}
+
 	//We use the Meta Attribute
 	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
