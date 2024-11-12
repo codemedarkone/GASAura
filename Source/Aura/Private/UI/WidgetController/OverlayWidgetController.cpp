@@ -11,7 +11,7 @@ void UOverlayWidgetController::BroadcastInitialValues()
 {
 	/*All we are doing is assigning the variable AuraAttributeSet = AttributeSet so that we can use AuraAttributeSet variables 
 	from UAuraAttributeSet in this class. This class has a type UAttributeSet variable which we assign to AuraAttributeSet. 
-	Then we use AuraAttributeSet to get the variables it has since the parent class is UAttributeSet* Attribute can cast to its child
+	Then we use AuraAttributeSet to get the variables it has since the parent class is UAttributeSet* Attribute, which can cast to its child
 	which is the UAuraAttributeSet. 	
 	*/
 	const UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);
@@ -30,11 +30,13 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	const UAuraAttributeSet* AuraAttributeSet = Cast<UAuraAttributeSet>(AttributeSet);
 
 		/*Respond to when attributes change, health, mana etc.ASC has a function for this.
-		This takes a FGameplayAttribute such as below. To bind to it you would use (.)AddUObject().
+		This takes an FGameplayAttribute such as below. To bind to it you would use (.)AddUObject().
 		To bind a callback to AddUobject(this, CallBackFunction) as shown below.
+
 		GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetHealthAttribute())
 		
 		*/
+
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AuraAttributeSet->GetHealthAttribute()).AddLambda(
 			[this](const FOnAttributeChangeData& Data)
 			{
