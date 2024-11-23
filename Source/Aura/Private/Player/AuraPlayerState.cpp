@@ -23,9 +23,14 @@ AAuraPlayerState::AAuraPlayerState()
 
 	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
 
-	//prevent lag time the higher it is
-	NetUpdateFrequency = 100.f; 
+	//prevent lag time the higher it is SetNetUpdateFrequency() or GetNetUpdateFrequency()
+	/*
+	// Was used before 5.5 update no its 
+	// NetUpdateFrequency = 100.f; 
+	*/
+	SetNetUpdateFrequency(100); 
 }
+
 
 
 
